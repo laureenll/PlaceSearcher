@@ -31,7 +31,7 @@ public class Exercice6Fragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    //test commit
+    //test commit2
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
