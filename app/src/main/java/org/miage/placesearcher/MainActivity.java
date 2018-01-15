@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.EventLog;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.RatingBar;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.miage.placesearcher.event.EventBusManager;
 import org.miage.placesearcher.services.PlaceSearchService;
 
 import java.io.IOException;
@@ -47,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // ajoute 1 à chaque reouverture de la page
         ratingBarTest.setRating(ratingBarTest.getRating()+1);
-
-        // requete GET HTTP
-        PlaceSearchService placeSearchService = new PlaceSearchService();
-        AsyncTask<String, Void, Response> liste = placeSearchService.getListe("https://api-adresse.data.gouv.fr/search/?q=Place%20du%20commerce");
     }
 
     // click sur le text retire une étoile

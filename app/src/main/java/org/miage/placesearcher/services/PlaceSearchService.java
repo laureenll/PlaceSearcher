@@ -7,8 +7,13 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.miage.placesearcher.event.EventBusManager;
+import org.miage.placesearcher.event.SearchResultEvent;
+import org.miage.placesearcher.model.Place;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -50,17 +55,25 @@ public class PlaceSearchService {
                     JSONObject jsonObj = new JSONObject(response.body().string());
                     JSONArray features = jsonObj.getJSONArray("features");
 
+                    List<Place> myPlaces = new ArrayList<Place>();
                     for (int i=0; i < features.length(); i++) {
                         JSONObject o = features.getJSONObject(i);
                         String label = o.getJSONObject("properties").getString("label");
+                        String[] split = label.split(" ");
+                        Place place = new Place();
+                        int length = split.length;
+                        place.setStreet(split[0] + " " + split[1] + " " + split[2]);
+                        place.setCity(split[length - 1]);
+                        place.setZipCode(split[length - 2]);
+                        myPlaces.add(place);
                         Log.d(TAG, label);
                     }
+                    EventBusManager.BUS.post(new SearchResultEvent(myPlaces));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         };
         return asyncTask.execute(url);

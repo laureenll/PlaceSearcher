@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import org.miage.placesearcher.R;
 
+import java.util.Collection;
 import java.util.List;
 
 import butterknife.BindView;
@@ -47,5 +48,15 @@ public class PlaceAdapter extends ArrayAdapter<Place> {
         cityText.setText(getItem(i).getCity());
 
         return actualView;
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+    }
+
+    @Override
+    public void addAll(@NonNull Collection<? extends Place> collection) {
+        super.addAll(collection);
     }
 }
