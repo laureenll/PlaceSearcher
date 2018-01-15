@@ -8,9 +8,16 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,9 +36,35 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         // onResume appelé à chaque chargement de la page
         super.onResume();
+        // ajoute 1 à chaque reouverture de la page
         ratingBarTest.setRating(ratingBarTest.getRating()+1);
+
+        // requete GET HTTP
+        /*OkHttpClient okHttpClient = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("https://api-adresse.data.gouv.fr/search/?q=Place%20du%20commerce")
+                .build();
+
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            // callback error
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            // callback success
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
+                Toast.makeText(getBaseContext(), "success",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });*/
     }
 
+    // click sur le text retire une étoile
     @OnClick(R.id.helloWordMsg)
     public void onClickMe() {
         Toast.makeText(getBaseContext(), "click text",
@@ -39,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         ratingBarTest.setRating(ratingBarTest.getRating()-1);
     }
 
+    // vers une autre page activity pour l'exercice 6
     @OnClick(R.id.exercice6ButtonPage)
     public void changePage() {
         Toast.makeText(getBaseContext(), "change page",

@@ -37,7 +37,7 @@
             android:id="@+id/buttonGoogleSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ButtonGoogleSearch"
+            android:text="Recherche google"
             app:layout_constraintTop_toBottomOf="@+id/textStreet" />
 
         <Button
@@ -55,6 +55,12 @@
             android:text="Import Image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonPartageLocalisation" />
+
+        <Button
+            android:id="@+id/buttonSendImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Envoyer Image" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

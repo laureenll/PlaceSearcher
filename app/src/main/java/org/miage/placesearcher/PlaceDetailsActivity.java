@@ -20,6 +20,7 @@ import butterknife.OnClick;
 public class PlaceDetailsActivity extends AppCompatActivity {
 
     private static final int SELECT_PHOTO = 0;
+    private static final int SEND_PHOTO = 1;
     @BindView(R.id.textId)
     TextView textId;
     @BindView(R.id.textStreet)
@@ -63,9 +64,16 @@ public class PlaceDetailsActivity extends AppCompatActivity {
     @OnClick(R.id.buttonIdImportImg)
     public void onClickImportMe() {
         Intent photoImport = new Intent(Intent.ACTION_PICK);
-        photoImport.putExtra(Intent.EXTRA_TEXT, getIntent().getStringExtra("streetItem"));
         photoImport.setType("image/*");
         startActivityForResult(photoImport, SELECT_PHOTO);
+    }
+
+    @OnClick(R.id.buttonSendImage)
+    public void onClickSendMe() {
+        // choisir image
+        Intent photoImport = new Intent(Intent.ACTION_PICK);
+        photoImport.setType("image/*");
+        startActivityForResult(photoImport, SEND_PHOTO);
     }
 
     @Override
@@ -77,6 +85,15 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                 if(resultCode == RESULT_OK) {
                     Uri selectImg = data.getData();
                     imgImport.setImageURI(selectImg);
+                }
+            case SEND_PHOTO:
+                if(resultCode == RESULT_OK) {
+                    Uri selectImg = data.getData();
+                    // envoi image vers destinataire
+                    Intent launchBrowser = new Intent(Intent.ACTION_SEND);
+                    launchBrowser.putExtra(Intent.EXTRA_STREAM, selectImg);
+                    launchBrowser.setType("image/*");
+                    startActivity(launchBrowser);
                 }
         }
     }
