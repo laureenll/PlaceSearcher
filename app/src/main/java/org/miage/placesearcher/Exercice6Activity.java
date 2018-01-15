@@ -72,6 +72,8 @@ public class Exercice6Activity extends AppCompatActivity implements AdapterView.
         Toast.makeText(getBaseContext(), "You selected place : " + itemAtPosition.getId(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(Exercice6Activity.this, PlaceDetailsActivity.class);
         intent.putExtra("streetItem", itemAtPosition.getStreet());
+        intent.putExtra("cityItem", itemAtPosition.getCity());
+        intent.putExtra("codeItem", itemAtPosition.getZipCode());
         intent.putExtra("idItem", Integer.valueOf(itemAtPosition.getId()).toString());
         startActivity(intent);
     }

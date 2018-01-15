@@ -47,7 +47,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
 
     @OnClick(R.id.buttonGoogleSearch)
     public void onClickGoogleMe() {
-        Uri urlGoogle = Uri.parse("geo:0,0?q=" + getIntent().getStringExtra("streetItem"));
+        Uri urlGoogle = Uri.parse("geo:0,0?q=" + getIntent().getStringExtra("streetItem") + "," + getIntent().getStringExtra("cityItem") + "," + getIntent().getStringExtra("codeItem"));
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW);
         launchBrowser.setData(urlGoogle);
         startActivity(launchBrowser);
