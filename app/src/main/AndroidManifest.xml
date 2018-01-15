@@ -15,13 +15,16 @@ liste les services
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".Exercice6Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Exercice6Activity"></activity>
+        <activity android:name=".PlaceDetailsActivity" />
     </application>
 
 </manifest>

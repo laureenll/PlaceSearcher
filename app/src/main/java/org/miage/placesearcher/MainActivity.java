@@ -1,10 +1,8 @@
 package org.miage.placesearcher;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public void changePage() {
         Toast.makeText(getBaseContext(), "change page",
                 Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(MainActivity.this, Exercice6Fragment.class);
+        Intent intent = new Intent(MainActivity.this, Exercice6Activity.class);
         startActivity(intent);
     }
 

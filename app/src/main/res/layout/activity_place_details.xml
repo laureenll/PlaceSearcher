@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.miage.placesearcher.PlaceDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/idImageImport"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@color/white" />
+
+        <TextView
+            android:id="@+id/textId"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@id/idImageImport"
+            android:text="Id item"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textStreet"
+            android:layout_width="match_parent"
+            android:layout_below="@id/textId"
+            android:layout_height="25dp"
+            android:textAlignment="center"
+            android:text="street item" />
+
+        <Button
+            android:id="@+id/buttonGoogleSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ButtonGoogleSearch"
+            app:layout_constraintTop_toBottomOf="@+id/textStreet" />
+
+        <Button
+            android:id="@+id/buttonPartageLocalisation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Partage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonGoogleSearch" />
+
+        <Button
+            android:id="@+id/buttonIdImportImg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Import Image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPartageLocalisation" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
