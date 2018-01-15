@@ -1,14 +1,22 @@
 package org.miage.placesearcher;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.miage.placesearcher.services.PlaceSearchService;
+
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +29,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "main";
     @BindView(R.id.helloWordMsg) TextView helloWordMsg;
     @BindView(R.id.ratingBarTest) RatingBar ratingBarTest;
     @BindView(R.id.exercice6ButtonPage) Button exercice6ButtonPage;
@@ -40,28 +49,8 @@ public class MainActivity extends AppCompatActivity {
         ratingBarTest.setRating(ratingBarTest.getRating()+1);
 
         // requete GET HTTP
-        /*OkHttpClient okHttpClient = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("https://api-adresse.data.gouv.fr/search/?q=Place%20du%20commerce")
-                .build();
-
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            // callback error
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            // callback success
-            @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                if (!response.isSuccessful()) {
-                    throw new IOException("Unexpected code " + response);
-                }
-                Toast.makeText(getBaseContext(), "success",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });*/
+        PlaceSearchService placeSearchService = new PlaceSearchService();
+        AsyncTask<String, Void, Response> liste = placeSearchService.getListe("https://api-adresse.data.gouv.fr/search/?q=Place%20du%20commerce");
     }
 
     // click sur le text retire une étoile
