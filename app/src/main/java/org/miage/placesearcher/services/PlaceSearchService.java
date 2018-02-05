@@ -62,9 +62,6 @@ public class PlaceSearchService {
                         String[] split = label.split(" ");
                         Place place = new Place();
                         int length = split.length;
-                        place.setStreet(split[0] + " " + split[1] + " " + split[2]);
-                        place.setCity(split[length - 1]);
-                        place.setZipCode(split[length - 2]);
                         myPlaces.add(place);
                         Log.d(TAG, label);
                     }

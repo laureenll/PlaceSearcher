@@ -43,9 +43,9 @@ public class PlaceAdapter extends ArrayAdapter<Place> {
             actualView = inflater.inflate(R.layout.list_item_city, parent, false);
         }
         ButterKnife.bind(this, actualView);
-        streetText.setText(getItem(i).getStreet());
-        codePostal.setText(getItem(i).getZipCode());
-        cityText.setText(getItem(i).getCity());
+        streetText.setText(getItem(i) != null && getItem(i).getProperties() != null ? getItem(i).getProperties().getName() : "");
+        codePostal.setText(getItem(i) != null && getItem(i).getProperties() != null ? getItem(i).getProperties().getCitycode(): "");
+        cityText.setText(getItem(i) != null && getItem(i).getProperties() != null ? getItem(i).getProperties().getCity() : "");
 
         return actualView;
     }
